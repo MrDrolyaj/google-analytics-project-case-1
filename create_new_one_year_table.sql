@@ -36,9 +36,9 @@ EXTRACT(HOUR FROM started_at) AS time_of_day,
 
 EXTRACT(DAY FROM started_at) AS day_of_month,
 
-DATE_DIFF(ended_at, started_at, minute) AS ride_length,
+CAST(DATE_DIFF(ended_at, started_at, second)/60 AS FLOAT64) AS ride_length,
 
-  CASE 
+CASE 
 
   WHEN EXTRACT(DAYOFWEEK FROM started_at) = 1 THEN 'Sun' 
 
@@ -54,9 +54,9 @@ DATE_DIFF(ended_at, started_at, minute) AS ride_length,
 
   ELSE'Sat'  
 
-  END AS day_of_week, 
+END AS day_of_week, 
 
-  CASE 
+CASE 
 
   WHEN EXTRACT(MONTH FROM started_at) = 1 THEN 'Jan' 
 
@@ -82,6 +82,6 @@ DATE_DIFF(ended_at, started_at, minute) AS ride_length,
 
   ELSE 'Dec' 
 
-  END AS month,
+END AS month,
 
 FROM superb-joy-389606.cyclistic_data.year_trip 
