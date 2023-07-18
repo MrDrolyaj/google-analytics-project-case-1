@@ -88,11 +88,26 @@
 --POPULAR STATION BY MEMBERSHIP
 -- SELECT start_station_name,
 --   member_casual,
+--   AVG(start_lat) AS start_lat,
+--   AVG(start_lng) AS start_lng,
 --   COUNT(*) AS number_of_trips
 -- FROM superb-joy-389606.cyclistic_data.year_trip_cleaned
--- WHERE start_station_name IS NOT NULL AND member_casual='casual'
+-- WHERE start_station_name IS NOT NULL
+-- AND member_casual='casual'
 -- GROUP BY start_station_name, member_casual
--- ORDER BY member_casual, number_of_trips DESC
+-- ORDER BY number_of_trips DESC
+-- LIMIT 5
+
+
+-- POPULAR STATION BY ALL RIDERS
+-- SELECT start_station_name,
+--   COUNT(*) AS number_of_trips,
+--   AVG(start_lat) AS start_lat,
+--   AVG(start_lng) AS start_lng
+-- FROM superb-joy-389606.cyclistic_data.year_trip_cleaned
+-- WHERE start_station_name IS NOT NULL
+-- GROUP BY start_station_name
+-- ORDER BY number_of_trips DESC
 -- LIMIT 10
 
 --TO COUNT DISTINCT LOCATIONS
